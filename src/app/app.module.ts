@@ -1,18 +1,56 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {environment} from '../environments/environment';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatProgressSpinnerModule,
+  MatTableModule
+} from '@angular/material';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+// Components
+import {AppComponent} from './app.component';
+
+// Services
+import {BorderService} from './border.service';
+import {HttpClientModule} from '@angular/common/http';
+
+import {AppRoutingModule} from './app-routing.module';
+import {BorderCardComponent} from './components/border-card/border-card.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BorderCardComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatTableModule
   ],
-  providers: [],
+  exports: [MatButtonModule, MatCardModule, MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatTableModule],
+  providers: [BorderService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
