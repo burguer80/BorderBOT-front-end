@@ -1,1 +1,10 @@
-<router-outlet></router-outlet>
+<div class="container">
+  <div class="nav-bar">
+  </div>
+  <div class="content">
+    <mat-spinner *ngIf="(bordersList| async)?.length < 1"></mat-spinner>
+    <app-border-card *ngFor="let border of bordersList | async" [border]="border"></app-border-card>
+    <!--      <router-outlet></router-outlet>-->
+  </div>
+  <div class="footer">BorderBOT 2019</div>
+</div>
