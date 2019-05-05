@@ -1,2 +1,2 @@
-  <mat-spinner *ngIf="(bordersList| async)?.length < 1"></mat-spinner>
+<mat-spinner *ngIf="(bordersList| async)?.length < 1" [color]="'accent'"></mat-spinner>
   <app-border-card *ngFor="let border of bordersList | async" [border]="border"></app-border-card>
