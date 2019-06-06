@@ -18,4 +18,9 @@ export class BorderService {
   getBordersList(): Observable<any[]> {
     return this.db.list('borders').valueChanges();
   }
+
+  getFilteredBorders(filter): AngularFireList<any> {
+    return this.db.list('borders',
+      ref => ref.orderByChild('name').equalTo(filter));
+  }
 }

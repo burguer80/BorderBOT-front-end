@@ -25,12 +25,14 @@ import {HttpClientModule} from '@angular/common/http';
 
 import {AppRoutingModule} from './app-routing.module';
 import {BorderCardComponent} from './components/border-card/border-card.component';
+import {BorderListComponent} from './components/border-list/border-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BorderCardComponent
+    BorderCardComponent,
+    BorderListComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
