@@ -1,7 +1,8 @@
 export interface Border {
   id: number;
-  name: string;
+  name?: string;
   hours: string;
+  number: string;
   opens_at: number;
   closed_at: number;
   border_name: string;
