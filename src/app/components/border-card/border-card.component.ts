@@ -57,7 +57,7 @@ import {Border} from '../../interfaces/border';
   `,
   styles: [`
     mat-card-header {
-      height: 110px;
+      height: 120px;
       background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
     }
 
@@ -75,8 +75,8 @@ import {Border} from '../../interfaces/border';
     }
 
     .border-card {
-      max-width: 320px;
-      min-width: 320px;
+      max-width: 310px;
+      min-width: 310px;
     }
 
     .table-headers {
