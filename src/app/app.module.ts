@@ -26,6 +26,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {BorderCardComponent} from './components/border-card/border-card.component';
 import {BorderListComponent} from './components/border-list/border-list.component';
+import {AlertModule} from 'ngx-bootstrap/alert';
+import {ModalModule} from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import {BorderListComponent} from './components/border-list/border-list.componen
     MatGridListModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatTableModule
+    MatTableModule,
+    AlertModule.forRoot(),
+    ModalModule.forRoot()
   ],
   exports: [MatButtonModule, MatCardModule, MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatTableModule],
   providers: [BorderService],
