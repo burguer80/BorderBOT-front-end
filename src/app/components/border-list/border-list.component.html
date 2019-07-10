@@ -1,4 +1,4 @@
-<div class="input-group input-group-md my-4 col-6 mx-auto">
+<div *ngIf="(visibleBorders)?.length > 0" class="input-group input-group-md my-4 col-6 mx-auto">
   <input [(ngModel)]="filterBorder" aria-describedby="inputGroup-sizing-lg" aria-label="Sizing example input"
          class="form-control" name="filterBorder" placeholder="Search" type="text">
 </div>
