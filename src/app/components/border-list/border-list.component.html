@@ -1,6 +1,6 @@
-<div class="row">
-  <mat-spinner *ngIf="(visibleBorders)?.length < 1" [color]="'accent'" class=""></mat-spinner>
+<div class="row justify-content-center">
+  <mat-spinner *ngIf="(visibleBorders)?.length < 1" [color]="'accent'" class="text-center"></mat-spinner>
 
   <app-border-card *ngFor="let border of visibleBorders" [border]="border"
-                   class="col-sm-6 col-md-4 col-xl-2 py-2"></app-border-card>
+                   class="col-6 col-md-4 col-xl-2 py-2"></app-border-card>
 </div>
