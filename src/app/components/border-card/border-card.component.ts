@@ -67,7 +67,7 @@ import {Border} from '../../interfaces/border';
 
     mat-card-footer {
       margin-left: 5px;
-      font-size: 10px;
+      font-size: 11px;
     }
 
     mat-icon {
@@ -86,12 +86,12 @@ import {Border} from '../../interfaces/border';
     }
 
     .table-headers {
-      font-size: 10px;
+      font-size: 11px;
       font-weight: bold;
     }
 
     .table_value {
-      font-size: 10px;
+      font-size: 11px;
       opacity: 0.7;
     }
   `]
