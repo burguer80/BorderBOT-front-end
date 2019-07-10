@@ -15,6 +15,7 @@ export class BorderListComponent implements OnInit {
   bordersList: Observable<Border[]>;
   visibleBorders: Border[];
   borders: [];
+  filterBorder = '';
 
   constructor(private _border: BorderService) {
   }
@@ -22,24 +23,9 @@ export class BorderListComponent implements OnInit {
   ngOnInit() {
     this.bordersList = this._border.getBordersList();
     this.bordersList
-    //   .pipe(
-    //   map(arr =>
-    //     // tslint:disable-next-line:no-shadowed-variable
-    //     arr.filter(Border => Border.number === '250301')
-    //   )
-    // )
       .subscribe(results => {
-        console.log(results);
+        // console.log(results);
         this.visibleBorders = results;
       });
   }
-
-  borderListUpdated(data) {
-    console.log(data);
-  }
-
-  // filterBorders(filter) {
-  //   this.visibleBorders = this.bordersList;
-  //
-  // }
 }
