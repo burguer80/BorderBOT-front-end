@@ -4,16 +4,15 @@ import {Border} from '../../interfaces/border';
 @Component({
   selector: 'app-border-card',
   template: `
-    <mat-card class="border-card">
+    <mat-card class="border-card mx-auto" xmlns="http://www.w3.org/1999/html">
       <mat-card-header>
-        <mat-card-title>{{border.name}} - {{border.crossing_name}} </mat-card-title>
-        <mat-card-subtitle>{{border.hours}}</mat-card-subtitle>
+        <p class="card-title">{{border.name}} {{border.crossing_name ? '- ' + border.crossing_name : ''}} </p>
       </mat-card-header>
       <mat-card-content>
         <mat-grid-list cols="5" rowHeight="35">
           <div class="table-headers">
             <mat-grid-tile></mat-grid-tile>
-            <mat-grid-tile>Standard</mat-grid-tile>
+            <mat-grid-tile>Std.</mat-grid-tile>
             <mat-grid-tile>Ready</mat-grid-tile>
             <mat-grid-tile>Sentri</mat-grid-tile>
             <mat-grid-tile>Fast</mat-grid-tile>
@@ -51,42 +50,48 @@ import {Border} from '../../interfaces/border';
         </mat-grid-list>
       </mat-card-content>
       <mat-card-footer>
-        <p>Updated: <b>{{border?.taken_at |  date:'medium'}}</b></p>
+        <p><b>Updated:</b> {{border?.taken_at |  date:'medium'}}<br>
+          <b>Open hours:</b>{{border.hours}}</p>
       </mat-card-footer>
     </mat-card>
   `,
   styles: [`
     mat-card-header {
-      height: 110px;
+      height: 90px;
       background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
     }
 
-    mat-card-title {
-      margin-top: 10px;
-    }
-
     mat-grid-list {
-      top: -30px;
+      top: -25px;
     }
 
     mat-card-footer {
       margin-left: 5px;
-      font-size: 12px;
+      font-size: 11px;
+    }
+
+    mat-icon {
+      font-size: 20px;
     }
 
     .border-card {
-      max-width: 320px;
-      min-width: 320px;
+      max-width: 250px;
+      min-width: 200px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      margin-left: -20px;
+      margin-top: 5px;
     }
 
     .table-headers {
-      /*color: white;*/
-      font-size: 14px;
+      font-size: 11px;
       font-weight: bold;
     }
 
     .table_value {
-      font-size: 14px;
+      font-size: 11px;
       opacity: 0.7;
     }
   `]
