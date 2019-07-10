@@ -26,13 +26,18 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {BorderCardComponent} from './components/border-card/border-card.component';
 import {BorderListComponent} from './components/border-list/border-list.component';
+import {BorderSearchPipe} from './pipes/border-search.pipe';
+import {FormsModule} from '@angular/forms';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     BorderCardComponent,
-    BorderListComponent
+    BorderListComponent,
+    BorderSearchPipe
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -41,6 +46,7 @@ import {BorderListComponent} from './components/border-list/border-list.componen
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     MatButtonModule,
     MatCardModule,
     MatExpansionModule,
@@ -48,7 +54,7 @@ import {BorderListComponent} from './components/border-list/border-list.componen
     MatGridListModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatTableModule
+    MatTableModule,
   ],
   exports: [MatButtonModule, MatCardModule, MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatTableModule],
   providers: [BorderService],
