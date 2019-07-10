@@ -12,7 +12,7 @@ import {Border} from '../../interfaces/border';
         <mat-grid-list cols="5" rowHeight="35">
           <div class="table-headers">
             <mat-grid-tile></mat-grid-tile>
-            <mat-grid-tile>Stn.</mat-grid-tile>
+            <mat-grid-tile>Std.</mat-grid-tile>
             <mat-grid-tile>Ready</mat-grid-tile>
             <mat-grid-tile>Sentri</mat-grid-tile>
             <mat-grid-tile>Fast</mat-grid-tile>
