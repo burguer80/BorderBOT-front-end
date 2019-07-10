@@ -6,7 +6,7 @@ import {Border} from '../../interfaces/border';
   template: `
     <mat-card class="border-card mx-auto" xmlns="http://www.w3.org/1999/html">
       <mat-card-header>
-        <p class="card-title">{{border.name}} - {{border.crossing_name}} </p>
+        <p class="card-title">{{border.name}} {{border.crossing_name ? '- ' + border.crossing_name : ''}} </p>
       </mat-card-header>
       <mat-card-content>
         <mat-grid-list cols="5" rowHeight="35">

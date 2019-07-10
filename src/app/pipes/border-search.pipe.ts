@@ -6,9 +6,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class BorderSearchPipe implements PipeTransform {
 
   transform(borders: any, arg: any): any {
-    if (arg === '' || arg.lenght < 3) {
-      return borders;
-    }
+    if (arg === '' || arg.length < 3) return borders;
     const resultBorders = [];
     for (const border of borders) {
       if (border.name.toLowerCase().indexOf(arg.toLowerCase()) > -1 ||
