@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-* {
+html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background: lightgrey;
 }
 
 .container {
@@ -12,20 +13,32 @@
   /* Grid */
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 80px auto 75px;
-  grid-template-areas: "header" "main" "footer";
+  grid-template-rows: 80px auto 50px;
+  grid-template-areas: "header" "border-list" "footer";
 }
 
 .header {
   grid-area: header;
-}
+  margin-top: 20px;
 
-.main {
-  grid-area: main;
+  /* FlexBox */
   display: flex;
+  align-content: flex-start;
+  justify-content: center;
 }
 
+app-border-list {
+  grid-area: border-list;
+
+  /* FlexBox */
+  display: flex;
+  align-content: flex-start;
+  justify-content: center;
+  flex-flow: row wrap;
+  align-items: center;
+}
 
 footer {
   grid-area: footer;
+  justify-self: center;
 }

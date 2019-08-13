@@ -1,7 +1,13 @@
 <div class="container">
-  <div class="header"></div>
-  <div class="main">
-    <router-outlet></router-outlet>
+  <div class="header">
+    <mat-form-field class="example-form-field">
+      <input [(ngModel)]="filterValue" matInput placeholder="Search for a border" type="text">
+      <button (click)="filterValue=''" *ngIf="filterValue" aria-label="Clear" mat-button mat-icon-button matSuffix>
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
   </div>
-  <footer>footer</footer>
+  <app-border-list [filter]="filterValue"></app-border-list>
+  <!--    <router-outlet></router-outlet>-->
+  <footer>BorderBOT</footer>
 </div>
