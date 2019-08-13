@@ -1,14 +1,11 @@
-<div *ngIf="(visibleBorders)?.length > 0" class="">
-  <input [(ngModel)]="filterBorder" aria-describedby="inputGroup-sizing-lg" aria-label="Sizing example input"
-         class="" name="filterBorder" placeholder="Search" type="text">
-  <div class="">
-    <span class=""><mat-icon>search</mat-icon></span>
-  </div>
-</div>
-
-<div class="border-list">
+<!--<div *ngIf="(visibleBorders)?.length > 0" class="">-->
+<!--  <input [(ngModel)]="filterValue" aria-describedby="inputGroup-sizing-lg" aria-label="Sizing example input"-->
+<!--         class="" name="filterValue" placeholder="Search" type="text">-->
+<!--  <div class="">-->
+<!--    <span class=""><mat-icon>search</mat-icon></span>-->
+<!--  </div>-->
+<!--</div>-->
   <mat-spinner *ngIf="(visibleBorders)?.length < 1" [color]="'accent'" class=""></mat-spinner>
 
-  <app-border-card *ngFor="let border of visibleBorders | borderSearch:filterBorder" [border]="border"
-                   class=""></app-border-card>
-</div>
+<app-border-card *ngFor="let border of visibleBorders | borderSearch:filter" [border]="border"
+                 class=""></app-border-card>
