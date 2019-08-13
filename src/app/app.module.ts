@@ -12,7 +12,8 @@ import {
   MatGridListModule,
   MatIconModule,
   MatProgressSpinnerModule,
-  MatTableModule
+  MatTableModule,
+  MatInputModule, MatSelectModule
 } from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
@@ -28,8 +29,6 @@ import {BorderCardComponent} from './components/border-card/border-card.componen
 import {BorderListComponent} from './components/border-list/border-list.component';
 import {BorderSearchPipe} from './pipes/border-search.pipe';
 import {FormsModule} from '@angular/forms';
-
-
 
 
 @NgModule({
@@ -55,8 +54,11 @@ import {FormsModule} from '@angular/forms';
     MatIconModule,
     MatProgressSpinnerModule,
     MatTableModule,
+    MatInputModule,
+    MatSelectModule
   ],
-  exports: [MatButtonModule, MatCardModule, MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatTableModule],
+  exports: [MatButtonModule, MatCardModule, MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatTableModule,
+    MatInputModule],
   providers: [BorderService],
   bootstrap: [AppComponent]
 })
