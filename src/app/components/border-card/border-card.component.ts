@@ -50,7 +50,7 @@ import {Border} from '../../interfaces/border';
         </mat-grid-list>
       </mat-card-content>
       <mat-card-footer>
-        <p><b>Updated:</b> {{border?.taken_at |  date:'medium'}}<br>
+        <p><b>Updated:</b> {{border?.taken_at |  dateAgo}}<br>
           <b>Open hours:</b>{{border.hours}}</p>
       </mat-card-footer>
     </mat-card>
