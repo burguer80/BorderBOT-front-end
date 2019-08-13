@@ -29,6 +29,7 @@ import {BorderCardComponent} from './components/border-card/border-card.componen
 import {BorderListComponent} from './components/border-list/border-list.component';
 import {BorderSearchPipe} from './pipes/border-search.pipe';
 import {FormsModule} from '@angular/forms';
+import {DateAgoPipe} from './pipes/date-ago.pipe';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {FormsModule} from '@angular/forms';
     AppComponent,
     BorderCardComponent,
     BorderListComponent,
-    BorderSearchPipe
+    BorderSearchPipe,
+    DateAgoPipe
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
