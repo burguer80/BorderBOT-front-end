@@ -1,5 +1,8 @@
-mat-spinner {
-  grid-column: 1 / -1;
-  grid-row: 1 / -1;
-  margin: auto;
+.border-list {
+  /* FlexBox */
+  display: flex;
+  align-content: flex-start;
+  justify-content: center;
+  flex-flow: row wrap;
+  align-items: center;
 }
