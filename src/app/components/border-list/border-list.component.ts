@@ -15,7 +15,7 @@ export class BorderListComponent implements OnInit {
   bordersList: Observable<Border[]>;
   visibleBorders: Border[];
   borders: [];
-  filterBorder = '';
+  @Input() filter = '';
 
   constructor(private _border: BorderService) {
   }
