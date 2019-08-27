@@ -24,7 +24,6 @@ export class BorderListComponent implements OnInit {
     this.bordersList = this._border.getBordersList();
     this.bordersList
       .subscribe(results => {
-        // console.log(results);
         this.visibleBorders = results;
       });
   }
