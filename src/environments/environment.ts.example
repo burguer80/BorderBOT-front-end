@@ -1,0 +1,11 @@
+export const environment = {
+  production: true,
+  firebase: {
+    apiKey: 'api-key',
+    authDomain: 'app-name.firebaseapp.com',
+    databaseURL: 'https://db-name.firebaseio.com',
+    projectId: 'your-projectId',
+    storageBucket: 'your-bucket-name.appspot.com',
+    messagingSenderId: 'your-sendderId'
+  }
+};
