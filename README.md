@@ -1,5 +1,6 @@
-# BorderBOT
-> The latest United States border wait time.
+
+![BorderBOT](https://user-images.githubusercontent.com/47440/63899038-34df7e80-c9b0-11e9-9ff6-949a10d4fe8a.png)
+> The latest United States border wait times.
 
 This angular application shows the list of all the US Borders included all the detailed information from all ports.
 <img src="https://user-images.githubusercontent.com/47440/63734735-44d15400-c832-11e9-93a5-0a0c4db2c03c.gif" width="750">
