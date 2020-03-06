@@ -29,6 +29,8 @@ import {BorderListComponent} from './components/border-list/border-list.componen
 import {BorderSearchPipe} from './pipes/border-search.pipe';
 import {FormsModule} from '@angular/forms';
 import {DateAgoPipe} from './pipes/date-ago.pipe';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -41,6 +43,7 @@ import {DateAgoPipe} from './pipes/date-ago.pipe';
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule.enablePersistence(),
     AngularFireDatabaseModule,
     BrowserModule,
     HttpClientModule,
@@ -56,7 +59,8 @@ import {DateAgoPipe} from './pipes/date-ago.pipe';
     MatProgressSpinnerModule,
     MatTableModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
   ],
   exports: [MatButtonModule, MatCardModule, MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatTableModule,
     MatInputModule],
