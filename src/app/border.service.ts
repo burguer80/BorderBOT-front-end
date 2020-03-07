@@ -6,6 +6,7 @@ import {AngularFireDatabase, AngularFireList} from '@angular/fire/database';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {environment} from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,6 @@ export class BorderService {
   }
 
   getBorders() {
-    return this.ft.collection('borders').snapshotChanges();
+    return this._http.get(environment.apiURL);
   }
 }

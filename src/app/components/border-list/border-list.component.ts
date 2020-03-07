@@ -12,21 +12,17 @@ import {BorderService} from '../../border.service';
   styleUrls: ['./border-list.component.scss']
 })
 export class BorderListComponent implements OnInit {
-  visibleBorders: Border[];
+  visibleBorders: any[];
   @Input() filter = '';
 
   constructor(private _border: BorderService) {
   }
 
   ngOnInit() {
-    this._border.getBordersList()
-      .subscribe(borders => {
-        console.log(borders);
-        this.visibleBorders = borders;
-      });
-
-
     this._border.getBorders()
-      .subscribe(res => console.log(res[0].payload.doc.data()));
+      .subscribe(res => {
+        this.visibleBorders = res['ports'];
+        // console.log(res['ports']);
+      });
   }
 }
