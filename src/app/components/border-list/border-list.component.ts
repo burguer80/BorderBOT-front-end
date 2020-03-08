@@ -1,31 +1,53 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Border} from '../../interfaces/border';
-import {Observable, Subscription} from 'rxjs';
+import {interval, Observable, Subscription} from 'rxjs';
 import {pipe} from 'rxjs';
 import {map, filter} from 'rxjs/operators';
 
-import {BorderService} from '../../border.service';
+import {BorderService} from '../../services/border.service';
+import {RecentBordersStoreService} from '../../services/recent-borders-storage.service';
+import {BorderPayload} from '../../interfaces/border-payload';
+
 
 @Component({
   selector: 'app-border-list',
   templateUrl: './border-list.component.html',
   styleUrls: ['./border-list.component.scss']
 })
-export class BorderListComponent implements OnInit {
-  bordersList: Observable<Border[]>;
-  visibleBorders: Border[];
-  borders: [];
+export class BorderListComponent implements OnInit, OnDestroy {
+  subscriptions: Subscription[] = [];
   @Input() filter = '';
+  visibleBorders: any[];
+  delayInMilliSeconds = 300_000;
+  isLoading = true;
 
-  constructor(private _border: BorderService) {
+  constructor(private _border: BorderService,
+              private recentBordersStorageService: RecentBordersStoreService) {
   }
 
   ngOnInit() {
-    this.bordersList = this._border.getBordersList();
-    this.bordersList
-      .subscribe(results => {
-        // console.log(results);
-        this.visibleBorders = results;
+    this.fetchRecentEvents();
+
+    this.subscriptions.push(
+      interval(this.delayInMilliSeconds).subscribe(() => this.fetchRecentEvents())
+    );
+
+    this.subscriptions.push(
+      this.recentBordersStorageService.payload$.subscribe(payload => {
+        this.visibleBorders = payload.ports;
+      }));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
+  }
+
+  private fetchRecentEvents() {
+    this.isLoading = true;
+    this._border.getBorders()
+      .subscribe((res: BorderPayload) => {
+        this.recentBordersStorageService.update(res);
+        this.isLoading = false;
       });
   }
 }

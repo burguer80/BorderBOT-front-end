@@ -5,6 +5,8 @@ import {AngularFireDatabase, AngularFireList} from '@angular/fire/database';
 
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,15 +14,10 @@ import {Observable} from 'rxjs';
 export class BorderService {
   borders: AngularFireList<any>;
 
-  constructor(private db: AngularFireDatabase, private _http: HttpClient) {
+  constructor(private _http: HttpClient) {
   }
 
-  getBordersList(): Observable<any[]> {
-    return this.db.list('borders').valueChanges();
-  }
-
-  getFilteredBorders(filter): AngularFireList<any> {
-    return this.db.list('borders',
-      ref => ref.orderByChild('name').equalTo(filter));
+  getBorders() {
+    return this._http.get(environment.apiURL);
   }
 }

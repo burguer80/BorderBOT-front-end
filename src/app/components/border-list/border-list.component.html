@@ -1,4 +1,5 @@
-<mat-spinner *ngIf="(visibleBorders)?.length < 1" [color]="'accent'" class=""></mat-spinner>
+<mat-progress-bar *ngIf="isLoading" [color]="'accent'" mode="indeterminate"></mat-progress-bar>
 
 <app-border-card *ngFor="let border of visibleBorders | borderSearch:filter" [border]="border"
-                 class=""></app-border-card>
+                 class="">
+</app-border-card>
