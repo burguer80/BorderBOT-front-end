@@ -1,8 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {AngularFireModule} from '@angular/fire';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {environment} from '../environments/environment';
 
 import {MatButtonModule} from '@angular/material/button';
@@ -20,7 +18,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {AppComponent} from './app.component';
 
 // Services
-import {BorderService} from './border.service';
+import {BorderService} from './services/border.service';
 import {HttpClientModule} from '@angular/common/http';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -30,7 +28,8 @@ import {BorderSearchPipe} from './pipes/border-search.pipe';
 import {FormsModule} from '@angular/forms';
 import {DateAgoPipe} from './pipes/date-ago.pipe';
 import {ServiceWorkerModule} from '@angular/service-worker';
-import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {RecentBordersStoreService} from './services/recent-borders-storage.service';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -42,9 +41,6 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
     DateAgoPipe
   ],
   imports: [
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule.enablePersistence(),
-    AngularFireDatabaseModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
@@ -60,11 +56,12 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
     MatTableModule,
     MatInputModule,
     MatSelectModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    MatProgressBarModule
   ],
   exports: [MatButtonModule, MatCardModule, MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatTableModule,
     MatInputModule],
-  providers: [BorderService],
+  providers: [BorderService, RecentBordersStoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
