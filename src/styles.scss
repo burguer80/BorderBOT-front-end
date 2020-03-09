@@ -8,23 +8,24 @@ html, body {
 
 .container {
   height: 100vh;
-  margin: 0;
+  margin: 0 20px;
 
   /* Grid */
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 80px auto 50px;
-  grid-template-areas: "header" "border-list" "footer";
+  grid-template-rows: auto auto 50px;
+  grid-template-areas: "border-list" "footer";
 }
+
 
 .header {
   grid-area: header;
-  margin-top: 20px;
-
-  /* FlexBox */
-  display: flex;
-  align-content: flex-start;
-  justify-content: center;
+  //margin-top: 20px;
+  //
+  ///* FlexBox */
+  //display: flex;
+  //align-content: flex-start;
+  //justify-content: center;
 }
 
 app-border-list {
@@ -41,4 +42,29 @@ app-border-list {
 footer {
   grid-area: footer;
   justify-self: center;
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }

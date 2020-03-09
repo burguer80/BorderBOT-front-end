@@ -30,6 +30,10 @@ import {DateAgoPipe} from './pipes/date-ago.pipe';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {RecentBordersStoreService} from './services/recent-borders-storage.service';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatTabsModule} from '@angular/material/tabs';
+import {LocalStoreService} from './services/local-store.service';
+import {FavoriteBordersStoreService} from './services/favorite-borders-store.service';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 
 @NgModule({
@@ -57,11 +61,13 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatInputModule,
     MatSelectModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTabsModule,
+    ScrollingModule
   ],
   exports: [MatButtonModule, MatCardModule, MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatTableModule,
     MatInputModule],
-  providers: [BorderService, RecentBordersStoreService],
+  providers: [BorderService, FavoriteBordersStoreService, LocalStoreService, RecentBordersStoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Border} from '../../interfaces/border';
+import {FavoriteBordersStoreService} from '../../services/favorite-borders-store.service';
 
 @Component({
   selector: 'app-border-card',
@@ -19,7 +20,7 @@ import {Border} from '../../interfaces/border';
           </div>
 
           <mat-grid-tile class="table_icon">
-            <mat-icon>directions_walk</mat-icon>
+            <mat-icon class="lane_icon">directions_walk</mat-icon>
           </mat-grid-tile>
           <div class="table_value">
             <mat-grid-tile>{{formatValue(border.data?.pedestrian?.standard_lanes?.delay_minutes)}}</mat-grid-tile>
@@ -29,7 +30,7 @@ import {Border} from '../../interfaces/border';
           </div>
 
           <mat-grid-tile class="table_icon">
-            <mat-icon>directions_car</mat-icon>
+            <mat-icon class="lane_icon">directions_car</mat-icon>
           </mat-grid-tile>
           <div class="table_value">
             <mat-grid-tile>{{formatValue(border.data?.passenger?.standard_lanes?.delay_minutes)}}</mat-grid-tile>
@@ -39,7 +40,7 @@ import {Border} from '../../interfaces/border';
           </div>
 
           <mat-grid-tile class="table_icon">
-            <mat-icon>local_shipping</mat-icon>
+            <mat-icon class="lane_icon">local_shipping</mat-icon>
           </mat-grid-tile>
           <div class="table_value">
             <mat-grid-tile>{{formatValue(border.data?.commercial?.standard_lanes?.delay_minutes)}}</mat-grid-tile>
@@ -49,20 +50,25 @@ import {Border} from '../../interfaces/border';
           </div>
         </mat-grid-list>
       </mat-card-content>
-      <mat-card-footer>
-        <p><b>Updated:</b> {{border?.taken_at |  dateAgo}}<br>
-          <b>Open hours:</b>{{border.hours}}</p>
+      <mat-card-footer align="end">
+        <p>
+          <b>Updated:</b> {{border?.taken_at |  dateAgo}}
+          <!--          <b>Open hours:</b>{{border.hours}}-->
+          <button mat-button (click)="addToFavoritesBorders(border.number)">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">favorite</mat-icon>
+          </button>
+        </p>
       </mat-card-footer>
     </mat-card>
   `,
   styles: [`
     mat-card-header {
-      height: 90px;
+      padding: 5px;
       background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
     }
 
     mat-grid-list {
-      top: -25px;
+      top: 5px;
     }
 
     mat-card-footer {
@@ -70,12 +76,11 @@ import {Border} from '../../interfaces/border';
       font-size: 11px;
     }
 
-    mat-icon {
-      font-size: 20px;
+    .lane_icon {
+      font-size: 28px;
     }
 
     .border-card {
-      max-width: 250px;
       min-width: 250px;
       margin: 10px;
     }
@@ -101,7 +106,7 @@ import {Border} from '../../interfaces/border';
 export class BorderCardComponent implements OnInit {
   @Input() border: Border;
 
-  constructor() {
+  constructor(private  favoriteBordersStoreService: FavoriteBordersStoreService) {
   }
 
   ngOnInit() {
@@ -114,6 +119,10 @@ export class BorderCardComponent implements OnInit {
       formatted_value = cleaned_value + 'm';
     }
     return formatted_value;
+  }
+
+  addToFavoritesBorders(number) {
+    this.favoriteBordersStoreService.push(number);
   }
 
 }

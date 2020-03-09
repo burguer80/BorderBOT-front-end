@@ -7,6 +7,7 @@ import {map, filter} from 'rxjs/operators';
 import {BorderService} from '../../services/border.service';
 import {RecentBordersStoreService} from '../../services/recent-borders-storage.service';
 import {BorderPayload} from '../../interfaces/border-payload';
+import {environment} from '../../../environments/environment';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class BorderListComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   @Input() filter = '';
   visibleBorders: any[];
-  delayInMilliSeconds = 300_000;
+  delayInMilliSeconds = environment.delayForNextRefresh;
   isLoading = true;
 
   constructor(private _border: BorderService,

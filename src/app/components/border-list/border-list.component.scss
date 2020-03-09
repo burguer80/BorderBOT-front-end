@@ -1,5 +1,15 @@
+cdk-virtual-scroll-viewport {
+  height: 90vh;
+  margin-bottom: 20px;
+}
+
 mat-progress-bar {
   position: fixed;
   top: 0px;
   z-index: 99;
 }
+
+.viewport {
+  width: 100%;
+}
+

@@ -1,5 +1,6 @@
 <mat-progress-bar *ngIf="isLoading" [color]="'accent'" mode="indeterminate"></mat-progress-bar>
-
-<app-border-card *ngFor="let border of visibleBorders | borderSearch:filter" [border]="border"
-                 class="">
-</app-border-card>
+<cdk-virtual-scroll-viewport class="viewport" itemSize="200">
+  <app-border-card *cdkVirtualFor="let border of visibleBorders | borderSearch:filter" [border]="border"
+                   class="">
+  </app-border-card>
+</cdk-virtual-scroll-viewport>
