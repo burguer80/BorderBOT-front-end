@@ -1,13 +1,22 @@
 <div class="container">
-  <div class="header">
-    <mat-form-field class="example-form-field">
-      <input [(ngModel)]="filterValue" matInput placeholder="Search for a border" type="text">
-      <button (click)="filterValue=''" *ngIf="filterValue" aria-label="Clear" mat-button mat-icon-button matSuffix>
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>
-  </div>
-  <app-border-list [filter]="filterValue"></app-border-list>
   <!--    <router-outlet></router-outlet>-->
-  <footer>BorderBOT</footer>
+  <button (click)="toggleVisible()" class="search-icon" mat-button>
+    <mat-icon aria-hidden="false" aria-label="Search" class="material-icons">search</mat-icon>
+  </button>
+  <mat-tab-group>
+    <mat-tab label="All Borders">
+      <mat-form-field *ngIf="searchVisible" class="search-border-input">
+        <input [(ngModel)]="filterValue" matInput placeholder="Search for a border" type="text">
+        <button (click)="filterValue=''" *ngIf="filterValue" aria-label="Clear" mat-button mat-icon-button matSuffix>
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <app-border-list [filter]="filterValue"></app-border-list>
+    </mat-tab>
+    <mat-tab label="❤️Favorites">
+      <div class="container">
+        <div>{{favoriteBorders | json}}</div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </div>
