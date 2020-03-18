@@ -3,12 +3,16 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "clean": "rimraf ./dist",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "build:prod": "ng build --prod",
+    "test": "ng test --watch=false --browsers=ChromeHeadlessCustom",
+    "test:watch": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --prod --base-href https://burguer80.github.io/BorderBOT-front-end/ && angular-cli-ghpages --branch gh-pages --dir /dist/BorderBOT-front-end"
+    "deploy": "ng build --prod --base-href https://burguer80.github.io/BorderBOT-front-end/ && angular-cli-ghpages --branch gh-pages --dir /dist/BorderBOT-front-end",
+    "build:ci": "npm run clean && npm run test && npm run build:prod"
   },
   "private": true,
   "dependencies": {
