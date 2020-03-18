@@ -10,55 +10,70 @@ import {FavoriteBordersStoreService} from '../../services/favorite-borders-store
         <p class="card-title">{{border.name}} {{border.crossing_name ? '- ' + border.crossing_name : ''}} </p>
       </mat-card-header>
       <mat-card-content>
-        <mat-grid-list cols="5" rowHeight="35">
-          <div class="table-headers">
-            <mat-grid-tile></mat-grid-tile>
-            <mat-grid-tile>Std.</mat-grid-tile>
-            <mat-grid-tile>Ready</mat-grid-tile>
-            <mat-grid-tile>Sentri</mat-grid-tile>
-            <mat-grid-tile>Fast</mat-grid-tile>
-          </div>
 
-          <mat-grid-tile class="table_icon">
-            <mat-icon class="lane_icon">directions_walk</mat-icon>
-          </mat-grid-tile>
-          <div class="table_value">
-            <mat-grid-tile>{{formatValue(border.data?.pedestrian?.standard_lanes?.delay_minutes)}}</mat-grid-tile>
-            <mat-grid-tile>{{formatValue(border.data?.pedestrian?.ready_lanes?.delay_minutes)}}</mat-grid-tile>
-            <mat-grid-tile>{{formatValue(border.data?.pedestrian?.NEXUS_SENTRI_lanes?.delay_minutes)}}</mat-grid-tile>
-            <mat-grid-tile>{{formatValue(border.data?.pedestrian?.FAST_lanes?.delay_minutes)}}</mat-grid-tile>
-          </div>
 
-          <mat-grid-tile class="table_icon">
-            <mat-icon class="lane_icon">directions_car</mat-icon>
-          </mat-grid-tile>
-          <div class="table_value">
-            <mat-grid-tile>{{formatValue(border.data?.passenger?.standard_lanes?.delay_minutes)}}</mat-grid-tile>
-            <mat-grid-tile>{{formatValue(border.data?.passenger?.ready_lanes?.delay_minutes)}}</mat-grid-tile>
-            <mat-grid-tile>{{formatValue(border.data?.passenger?.NEXUS_SENTRI_lanes?.delay_minutes)}}</mat-grid-tile>
-            <mat-grid-tile>{{formatValue(border.data?.passenger?.FAST_lanes?.delay_minutes)}}</mat-grid-tile>
-          </div>
+        <mat-accordion>
 
-          <mat-grid-tile class="table_icon">
-            <mat-icon class="lane_icon">local_shipping</mat-icon>
-          </mat-grid-tile>
-          <div class="table_value">
-            <mat-grid-tile>{{formatValue(border.data?.commercial?.standard_lanes?.delay_minutes)}}</mat-grid-tile>
-            <mat-grid-tile>{{formatValue(border.data?.commercial?.ready_lanes?.delay_minutes)}}</mat-grid-tile>
-            <mat-grid-tile>{{formatValue(border.data?.commercial?.NEXUS_SENTRI_lanes?.delay_minutes)}}</mat-grid-tile>
-            <mat-grid-tile>{{formatValue(border.data?.commercial?.FAST_lanes?.delay_minutes)}}</mat-grid-tile>
-          </div>
-        </mat-grid-list>
+          <mat-expansion-panel [expanded]="false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <b>Updated:</b>
+              </mat-panel-title>
+              <mat-panel-description>
+                {{border?.taken_at |  dateAgo}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-grid-list cols="5" rowHeight="45">
+              <div class="table-headers">
+                <mat-grid-tile></mat-grid-tile>
+                <mat-grid-tile>Std.</mat-grid-tile>
+                <mat-grid-tile>Ready</mat-grid-tile>
+                <mat-grid-tile>Sentri</mat-grid-tile>
+                <mat-grid-tile>Fast</mat-grid-tile>
+              </div>
+
+              <mat-grid-tile class="table_icon">
+                <mat-icon class="lane_icon">directions_walk</mat-icon>
+              </mat-grid-tile>
+              <div class="table_value">
+                <mat-grid-tile>{{formatValue(border.data?.pedestrian?.standard_lanes?.delay_minutes)}}</mat-grid-tile>
+                <mat-grid-tile>{{formatValue(border.data?.pedestrian?.ready_lanes?.delay_minutes)}}</mat-grid-tile>
+                <mat-grid-tile>{{formatValue(border.data?.pedestrian?.NEXUS_SENTRI_lanes?.delay_minutes)}}</mat-grid-tile>
+                <mat-grid-tile>{{formatValue(border.data?.pedestrian?.FAST_lanes?.delay_minutes)}}</mat-grid-tile>
+              </div>
+
+              <mat-grid-tile class="table_icon">
+                <mat-icon class="lane_icon">directions_car</mat-icon>
+              </mat-grid-tile>
+              <div class="table_value">
+                <mat-grid-tile>{{formatValue(border.data?.passenger?.standard_lanes?.delay_minutes)}}</mat-grid-tile>
+                <mat-grid-tile>{{formatValue(border.data?.passenger?.ready_lanes?.delay_minutes)}}</mat-grid-tile>
+                <mat-grid-tile>{{formatValue(border.data?.passenger?.NEXUS_SENTRI_lanes?.delay_minutes)}}</mat-grid-tile>
+                <mat-grid-tile>{{formatValue(border.data?.passenger?.FAST_lanes?.delay_minutes)}}</mat-grid-tile>
+              </div>
+
+              <mat-grid-tile class="table_icon">
+                <mat-icon class="lane_icon">local_shipping</mat-icon>
+              </mat-grid-tile>
+              <div class="table_value">
+                <mat-grid-tile>{{formatValue(border.data?.commercial?.standard_lanes?.delay_minutes)}}</mat-grid-tile>
+                <mat-grid-tile>{{formatValue(border.data?.commercial?.ready_lanes?.delay_minutes)}}</mat-grid-tile>
+                <mat-grid-tile>{{formatValue(border.data?.commercial?.NEXUS_SENTRI_lanes?.delay_minutes)}}</mat-grid-tile>
+                <mat-grid-tile>{{formatValue(border.data?.commercial?.FAST_lanes?.delay_minutes)}}</mat-grid-tile>
+              </div>
+            </mat-grid-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+
       </mat-card-content>
-      <mat-card-footer align="end">
-        <p>
-          <b>Updated:</b> {{border?.taken_at |  dateAgo}}
-          <!--          <b>Open hours:</b>{{border.hours}}-->
-          <button mat-button (click)="addToFavoritesBorders(border.number)">
-            <mat-icon aria-hidden="false" aria-label="Example home icon">favorite</mat-icon>
-          </button>
-        </p>
-      </mat-card-footer>
+      <mat-card-actions align="end">
+        <button mat-button (click)="addToFavoritesBorders(border.number)">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">favorite</mat-icon>
+        </button>
+
+      </mat-card-actions>
     </mat-card>
   `,
   styles: [`
@@ -73,7 +88,7 @@ import {FavoriteBordersStoreService} from '../../services/favorite-borders-store
 
     mat-card-footer {
       margin-left: 5px;
-      font-size: 11px;
+      font-size: 0.8rem;
     }
 
     .lane_icon {
@@ -86,18 +101,18 @@ import {FavoriteBordersStoreService} from '../../services/favorite-borders-store
     }
 
     .card-title {
-      font-size: 16px;
+      font-size: 1.3rem;
       margin-left: -20px;
       margin-top: 5px;
     }
 
     .table-headers {
-      font-size: 11px;
+      font-size: 0.8rem;
       font-weight: bold;
     }
 
     .table_value {
-      font-size: 11px;
+      font-size: 0.85rem;
       opacity: 0.7;
     }
   `]
