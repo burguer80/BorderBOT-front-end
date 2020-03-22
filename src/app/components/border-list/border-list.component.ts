@@ -20,7 +20,7 @@ import {LoadBorders} from '../../actions/border.actions';
 })
 export class BorderListComponent implements OnInit {
   @Input() filter = '';
-  visibleBorders$: Observable<any>;
+  visibleBorders$: Observable<Border[]>;
   delayInMilliSeconds = environment.delayForNextRefresh;
   loading$: Observable<Boolean>;
   error$: Observable<Error>;
