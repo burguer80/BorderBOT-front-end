@@ -27,7 +27,7 @@ export function BorderReducer(state = initialState, action: BorderActions): Bord
     case BorderActionTypes.LOAD_BORDER_SUCCESS:
       return {
         ...state,
-        list: action.payload,
+        list: action.payload.ports,
         loading: false
       };
     case BorderActionTypes.LOAD_BORDERS_FAILURE:

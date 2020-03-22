@@ -1,7 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {RecentBordersStoreService} from './services/recent-borders-storage.service';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {FavoriteBordersStoreService} from './services/favorite-borders-store.service';
+import {Store} from '@ngrx/store';
+import {BorderState} from './reducers/borders.reducer';
+import {LoadBorders} from './actions/border.actions';
+import {AppState} from './reducers';
 
 @Component({
   selector: 'app-root',
@@ -15,12 +19,17 @@ export class AppComponent implements OnInit {
   favoriteBorderIds = [];
   searchVisible = false;
 
-  constructor(private recentBordersStorageService: RecentBordersStoreService,
-              private favoriteBordersStoreService: FavoriteBordersStoreService) {
+  constructor(
+    private store: Store<AppState>,
+    private recentBordersStorageService: RecentBordersStoreService,
+    private favoriteBordersStoreService: FavoriteBordersStoreService) {
     this.favoriteBorderIds = this.favoriteBordersStoreService.ids();
   }
 
   ngOnInit(): void {
+
+    this.store.dispatch(new LoadBorders());
+
     this.subscriptions.push(
       this.favoriteBordersStoreService.ids$.subscribe(ids => {
         this.favoriteBorderIds = ids;
