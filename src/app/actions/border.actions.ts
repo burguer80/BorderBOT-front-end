@@ -17,7 +17,6 @@ export class LoadBordersSuccess implements Action {
 
   constructor(public payload: any) {
   }
-
 }
 
 export class LoadBordersFailure implements Action {
@@ -26,6 +25,5 @@ export class LoadBordersFailure implements Action {
   constructor(public payload: Error) {
   }
 }
-
 
 export type BorderActions = LoadBorders | LoadBordersSuccess | LoadBordersFailure;

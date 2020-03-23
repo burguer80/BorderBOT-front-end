@@ -31,6 +31,4 @@ export class BorderListComponent implements OnInit {
     this.visibleBorders$ = this.store.select(store => store.borders.list);
     this.updatedAt$ = this.store.select(store => store.borders.updated_at);
   }
-
-
 }
