@@ -6,15 +6,17 @@ import {BorderActions, BorderActionTypes} from '../actions/border.actions';
 export const bordersFeatureKey = 'borders';
 
 export interface BorderState {
+  error: Error;
   list: Border[];
   loading: boolean;
-  error: Error;
+  updated_at: string;
 }
 
 export const initialState: BorderState = {
+  error: undefined,
   list: [],
   loading: false,
-  error: undefined
+  updated_at: undefined
 };
 
 export function BorderReducer(state = initialState, action: BorderActions): BorderState {
@@ -28,7 +30,8 @@ export function BorderReducer(state = initialState, action: BorderActions): Bord
       return {
         ...state,
         list: action.payload.ports,
-        loading: false
+        loading: false,
+        updated_at: action.payload.updated_at
       };
     case BorderActionTypes.LOAD_BORDERS_FAILURE:
       return {

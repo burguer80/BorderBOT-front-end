@@ -12,7 +12,7 @@ export class LatestBordersEffects {
   @Effect()
   loadBorders$: Observable<any> = this.actions$.pipe(
     ofType(BorderActionTypes.LOAD_BORDERS),
-    mergeMap(action =>
+    mergeMap(() =>
       this.borderService.getBorders().pipe(
         map(data =>
           new LoadBordersSuccess(data)
