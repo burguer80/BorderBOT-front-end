@@ -34,6 +34,11 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {LocalStoreService} from './services/local-store.service';
 import {FavoriteBordersStoreService} from './services/favorite-borders-store.service';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {StoreModule} from '@ngrx/store';
+import {reducers, metaReducers} from './reducers';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {EffectsModule} from '@ngrx/effects';
+import {LatestBordersEffects} from './effects/latest-borders.effects';
 
 
 @NgModule({
@@ -63,7 +68,16 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     MatProgressBarModule,
     MatTabsModule,
-    ScrollingModule
+    ScrollingModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+      }
+    }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([LatestBordersEffects])
   ],
   exports: [MatButtonModule, MatCardModule, MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatTableModule,
     MatInputModule],
